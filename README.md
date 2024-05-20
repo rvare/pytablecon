@@ -1,2 +1,4 @@
-# pytablecon
-A table converter to convert different interchangeable data formats like CSV or TSV to a Markdown style table or HTML tables and more.
+# PyTableCon
+
+A table converter written in Python to convert different interchangeable data formats like CSV or TSV to a Markdown style table or HTML tables and more.
+
