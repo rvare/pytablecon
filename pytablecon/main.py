@@ -10,8 +10,9 @@ if __name__ == '__main__':
     split_lines = [i.split('|') for i in strip_lines]
     lines = list()
     for i in split_lines:
-        del i[0]
-        del i[-1]
+        if i[0] == '' and i[-1] == '':
+            del i[0]
+            del i[-1]
 
         for j, s in enumerate(i):
             i[j] = s.strip()

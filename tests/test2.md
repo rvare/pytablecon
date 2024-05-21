@@ -1,4 +1,4 @@
-col1|col2|col3
+test 2|col 2|col 3
 -|-|-
 row 1|record 1|text
 row 2|record 2|text
