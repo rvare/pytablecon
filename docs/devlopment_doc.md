@@ -18,8 +18,8 @@ The following is the main flow of execution. It is made to be as abstract and ge
 
 ```text
 START
-	Check file extension
 	Parse command line arguments
+	Check file extension
 	
 	Open input file
 	Grab file contents
