@@ -62,6 +62,28 @@ def csv_to_mdtable(file_name):
     with open("../tests/test_output.md", mode="w") as output_file:
         output_file.writelines(str_lines)
         
+def tsv_to_mdtable(file_name):
+    """
+    Converts TSV file to Markdown table.
+    """
+    tsv_lines = list()
+    with open(file_name) as tsv_file:
+        for line in tsv_file:
+            tsv_lines.append(line)
+
+    num_columns = len(tsv_lines[0].split('\t'))
+    alignment_cols = "|" # This is the first pipe for the alignment syntax
+    for i in range(num_columns):
+        alignment_cols += "-|"
+
+    processed_lines = list()
+    for i in tsv_lines:
+        processed_lines.append( "| " + i.strip('\n').replace('\t', " | ") + " |\n" )
+
+    processed_lines.insert(1, alignment_cols + '\n')
+
+    with open("../tests/test_output.md", mode="w") as output_file:
+        output_file.writelines(processed_lines)
 
 if __name__ == '__main__':
     file_name = sys.argv[1]
@@ -74,5 +96,9 @@ if __name__ == '__main__':
 
     if file_extension == "md":
         mdtable_to_csv(file_name)
-    else:
+    elif file_extension == "csv":
         csv_to_mdtable(file_name)
+    elif file_extension == "tsv":
+        tsv_to_mdtable(file_name)
+    else:
+        print("Specify file name")
