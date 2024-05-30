@@ -14,7 +14,7 @@ def mdtable_to_csv(file_name):
             md_lines.append(i)
 
     # Process Markdown table and convert
-    processed_lines = [i.strip('\n').split('|') for i in md_lines]
+    processed_lines = [x.strip('\n').split('|') for x in md_lines]
     del processed_lines[1]
 
     str_lines = list()
@@ -113,7 +113,7 @@ def mdtable_to_tsv(file_name):
             md_lines.append(i)
 
     # Process Markdown table and convert
-    processed_lines = [i.strip('\n').split('|') for i in md_lines]
+    processed_lines = [x.strip('\n').split('|') for x in md_lines]
     del processed_lines[1]
 
     str_lines = list()
