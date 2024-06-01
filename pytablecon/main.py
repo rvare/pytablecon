@@ -35,32 +35,23 @@ def mdtable_to_csv(file_name):
 def csv_to_mdtable(file_name):
     """
     Converts a CSV to a formatted Markdown table.
-    TODO: Find way to make this function better
+    TODO: Find way to make this function better DONE
     """
     csv_lines = list()
     with open(file_name) as csv_file:
         csv_reader = csv.reader(csv_file)
-        second_line = False
-        temp_str = "|"
 
-        for line in csv_reader:
-            csv_lines.append(line)
-            if second_line == False:
-                for i in csv_lines[0]:
-                    temp_str += "-|"
-                temp_str += '\n'
-                second_line = True
-        str_lines = list()
-        second_line = False
-        
-        for i in csv_lines:
-            str_lines.append("| " + " | ".join(i) + " |\n")
-            if second_line == False:
-                str_lines.append(temp_str)
-                second_line = True
+        csv_iter = iter(csv_reader)
+        col_headers = next(csv_iter)
+        csv_lines.append("| " + " | ".join(col_headers) + " |\n")
+        alignment_columns = md_alignment_columns(",".join(col_headers), ',')
+        csv_lines.append(alignment_columns + '\n')
+
+        while (line := next(csv_iter, None)) is not None:
+            csv_lines.append("| " + " | ".join(line) + " |\n")
 
     with open("../tests/test_output.md", mode="w") as output_file:
-        output_file.writelines(str_lines)
+        output_file.writelines(csv_lines)
         
 def tsv_to_mdtable(file_name):
     """
@@ -143,8 +134,8 @@ if __name__ == '__main__':
     # print(file_name.split('.'))
 
     if file_extension == "md":
-        #mdtable_to_csv(file_name)
-        mdtable_to_tsv(file_name)
+        mdtable_to_csv(file_name)
+        #mdtable_to_tsv(file_name)
     elif file_extension == "csv":
         csv_to_mdtable(file_name)
     elif file_extension == "tsv":
