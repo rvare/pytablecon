@@ -125,8 +125,14 @@ def mdtable_to_tsv(file_name):
         output_file.writelines(joined_str)
 
 if __name__ == '__main__':
-    file_name = sys.argv[1]
-    lines_temp = list()
+    if len(sys.argv) >= 3:
+        file_name = sys.argv[1]
+        output_name = sys.argv[2]
+        lines_temp = list()
+    else:
+        print("Not enough arguments. Be sure to specify input file and output file format")
+        print("Ex: file_name.ex out")
+        exit()
 
     file_extension = file_name.split('.')[-1]
     # Prints for testing
@@ -134,11 +140,20 @@ if __name__ == '__main__':
     # print(file_name.split('.'))
 
     if file_extension == "md":
-        mdtable_to_csv(file_name)
-        #mdtable_to_tsv(file_name)
+        if output_name == "csv":
+            mdtable_to_csv(file_name)
+        elif output_name == "tsv":
+            mdtable_to_tsv(file_name)
     elif file_extension == "csv":
-        csv_to_mdtable(file_name)
+        if output_name == "md":
+            csv_to_mdtable(file_name)
+        elif output_name == "html":
+            print("CSV to HTML")
     elif file_extension == "tsv":
-        tsv_to_mdtable(file_name)
+        if output_name == "md":
+            tsv_to_mdtable(file_name)
+        elif output_name == "HTML":
+            print("TSV to HTML")
     else:
-        print("Specify file name")
+        print("Output format not valid")
+        exit()
