@@ -28,7 +28,8 @@ def mdtable_to_csv(file_name):
         str_lines.append(i)
     
     # Output to file
-    with open("../tests/test_output.csv", mode="w", newline="") as output_file:
+    output_path = file_name.replace("md", "csv")
+    with open(output_path, mode="w", newline="") as output_file:
         writer = csv.writer(output_file)
         writer.writerows(str_lines)
 
@@ -50,7 +51,8 @@ def csv_to_mdtable(file_name):
         while (line := next(csv_iter, None)) is not None:
             csv_lines.append("| " + " | ".join(line) + " |\n")
 
-    with open("../tests/test_output.md", mode="w") as output_file:
+    output_path = file_name.replace("csv", "md")
+    with open(output_path, mode="w") as output_file:
         output_file.writelines(csv_lines)
         
 def tsv_to_mdtable(file_name):
@@ -70,7 +72,8 @@ def tsv_to_mdtable(file_name):
 
     processed_lines.insert(1, alignment_cols + '\n')
 
-    with open("../tests/test_output.md", mode="w") as output_file:
+    output_path = file_name.replace("tsv", "md")
+    with open(output_path, mode="w") as output_file:
         output_file.writelines(processed_lines)
 
 def md_alignment_columns(cols, delimiter):
@@ -121,7 +124,8 @@ def mdtable_to_tsv(file_name):
     for i in str_lines:
         joined_str.append("\t".join(i) + '\n')
     
-    with open("../tests/test_output.tsv", "w") as output_file:
+    output_path = file_name.replace("md", "tsv")
+    with open(output_path, "w") as output_file:
         output_file.writelines(joined_str)
 
 if __name__ == '__main__':

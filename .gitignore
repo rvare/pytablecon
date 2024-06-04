@@ -1,3 +1,4 @@
 test_output*.*
 test*.*
 __pycache__
+tests/test*.*
