@@ -2,6 +2,7 @@ import sys
 from pytable_csv import *
 from pytable_tsv import *
 from pytable_md import *
+from pytable_html import *
 
 if __name__ == '__main__':
     if len(sys.argv) >= 3:
@@ -27,7 +28,8 @@ if __name__ == '__main__':
         if output_name == "md":
             csv_to_mdtable(file_name)
         elif output_name == "html":
-            print("CSV to HTML")
+            # print("CSV to HTML")
+            csv_to_html(file_name)
     elif file_extension == "tsv":
         if output_name == "md":
             tsv_to_mdtable(file_name)
