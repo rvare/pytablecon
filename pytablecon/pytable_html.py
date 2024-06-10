@@ -75,5 +75,49 @@ def tsv_to_html(file_name):
         output_file.write(' '*4 + "</body>\n</html>")
 
 def mdtable_to_html(file_name):
-    pass
+    """
+    Converts a Markdown table to HTML.
+    """
+    name_temp = file_name.split('.')[-2].split('/')[-1]
+    html_head = ' '*4 + "<head>\n" + ' '*8 + f"<title>{name_temp}</title>\n" + ' '*4 + "</head>\n"
+    table_lines = list()
+    md_table_lines = list()
+
+    with open(file_name) as md_file:
+        for line in md_file:
+            md_table_lines.append(line.strip('\n'))
     
+    md_iter = iter(md_table_lines)
+    table_lines.append(' '*4 + "<table>\n")
+    table_lines.append(' '*8 + "<tr>\n")
+    table_headers = next(md_iter).split('|')
+    del table_headers[0]
+    del table_headers[-1]
+    for i in range(len(table_headers)):
+        table_headers[i] = table_headers[i].strip()
+    table_headers_str = "</th>\n            <th>".join(table_headers)
+    table_headers_str = ' '*12 + f"<th>{table_headers_str}</th>\n"
+    table_lines.append(table_headers_str)
+    table_lines.append(' '*8 + "</tr>\n")
+
+    next(md_iter)
+
+    while (line := next(md_iter, None)) is not None:
+        table_lines.append(' '*8 + "<tr>\n")
+        table_cols = line.split('|')
+        del table_cols[0]
+        del table_cols[-1]
+        for i in range(len(table_cols)):
+            table_cols[i] = table_cols[i].strip()
+        table_cols_str = "</td>\n            <td>".join(table_cols)
+        table_cols_str = ' '*12 + f"<td>{table_cols_str}</td>\n"
+        table_lines.append(table_cols_str)
+    
+    table_lines.append(' '*4 + "</table>\n")
+    output_path = file_name.replace("md", "html")
+    with open(output_path, "w") as output_file:
+        output_file.write("<!DOCTYPE HTML>\n<html>\n")
+        output_file.write(html_head)
+        output_file.write(' '*4 + "<body>\n")
+        output_file.writelines(table_lines)
+        output_file.write(' '*4 + "</body>\n</html>")
