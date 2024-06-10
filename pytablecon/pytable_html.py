@@ -23,7 +23,7 @@ def csv_to_html(file_name):
 
         while (line := next(csv_iter, None)) is not None:
             table_lines.append(' '*8 + "<tr>\n")
-            for i in line:
+            for i in line: # Could replace by line.join(' '*12 + "<td>" + line.join("</td>\n<td>" + "</td>"))
                 table_lines.append(' '*12 + f"<td>{i}</td>\n")
             table_lines.append(' '*8 + "</tr>\n")
         
@@ -74,5 +74,6 @@ def tsv_to_html(file_name):
         output_file.writelines(table_lines)
         output_file.write(' '*4 + "</body>\n</html>")
 
-def md_to_html(file_name):
+def mdtable_to_html(file_name):
     pass
+    

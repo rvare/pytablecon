@@ -24,6 +24,8 @@ if __name__ == '__main__':
             mdtable_to_csv(file_name)
         elif output_name == "tsv":
             mdtable_to_tsv(file_name)
+        elif output_name == "html":
+            mdtable_to_html(file_name)
     elif file_extension == "csv":
         if output_name == "md":
             csv_to_mdtable(file_name)
@@ -34,7 +36,7 @@ if __name__ == '__main__':
         if output_name == "md":
             tsv_to_mdtable(file_name)
         elif output_name == "html":
-            print("TSV to HTML")
+            # print("TSV to HTML")
             tsv_to_html(file_name)
     else:
         print("Output format not valid")
