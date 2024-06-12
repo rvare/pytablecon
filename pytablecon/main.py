@@ -32,9 +32,13 @@ if __name__ == '__main__':
         elif output_name == "html":
             # print("CSV to HTML")
             csv_to_html(file_name)
+        elif output_name == "tsv":
+            csv_to_tsv(file_name)
     elif file_extension == "tsv":
         if output_name == "md":
             tsv_to_mdtable(file_name)
+        elif output_name == "csv":
+            tsv_to_csv(file_name)
         elif output_name == "html":
             # print("TSV to HTML")
             tsv_to_html(file_name)

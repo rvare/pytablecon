@@ -31,3 +31,19 @@ def mdtable_to_csv(file_name):
     with open(output_path, mode="w", newline="") as output_file:
         writer = csv.writer(output_file)
         writer.writerows(str_lines)
+
+def tsv_to_csv(file_name):
+    """
+    Converts a TSV file to a CSV file
+    """
+    tsv_lines = list()
+    with open(file_name) as tsv_file:
+        for i in tsv_file:
+            tsv_lines.append(i)
+    
+    processed_lines = [x.split('\t') for x in tsv_lines]
+    csv_lines = [','.join(x) for x in processed_lines]
+
+    output_path = file_name.replace("tsv", "csv")
+    with open(output_path, "w") as output_file:
+        output_file.writelines(csv_lines)

@@ -1,3 +1,5 @@
+import csv
+
 def mdtable_to_tsv(file_name):
     """
     Convert Markdown table to TSV.
@@ -30,3 +32,21 @@ def mdtable_to_tsv(file_name):
     output_path = file_name.replace("md", "tsv")
     with open(output_path, "w") as output_file:
         output_file.writelines(joined_str)
+
+def csv_to_tsv(file_name):
+    """
+    Converts a CSV file to a TSV file.
+    """
+    tsv_lines = list()
+
+    with open(file_name) as csv_file:
+        csv_reader = csv.reader(csv_file)
+        for row in csv_reader:
+            tsv_lines.append('\t'.join(row) + '\n')
+        
+        file_name_parts = file_name.split('.')
+        file_name_parts[-1] = "tsv"
+        output_file = '.'.join(file_name_parts)
+        print(output_file)
+        with open(output_file, mode="w") as output_file:
+            output_file.writelines(tsv_lines)
