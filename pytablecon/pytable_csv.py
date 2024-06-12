@@ -34,7 +34,9 @@ def mdtable_to_csv(file_name):
 
 def tsv_to_csv(file_name):
     """
-    Converts a TSV file to a CSV file
+    Converts a TSV file to a CSV file.
+    tsv_lines = contains lines read from a TSV file.
+    csv_lines = contains lines to be written to a CSV file.
     """
     tsv_lines = list()
     with open(file_name) as tsv_file:

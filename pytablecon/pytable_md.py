@@ -3,28 +3,30 @@ import csv
 def csv_to_mdtable(file_name):
     """
     Converts a CSV to a formatted Markdown table.
-    TODO: Find way to make this function better DONE
+    md_lines = contains data from CSV file in Markdown format.
     """
-    csv_lines = list()
+    md_lines = list()
     with open(file_name) as csv_file:
         csv_reader = csv.reader(csv_file)
 
         csv_iter = iter(csv_reader)
         col_headers = next(csv_iter)
-        csv_lines.append("| " + " | ".join(col_headers) + " |\n")
+        md_lines.append("| " + " | ".join(col_headers) + " |\n")
         alignment_columns = md_alignment_columns(",".join(col_headers), ',')
-        csv_lines.append(alignment_columns + '\n')
+        md_lines.append(alignment_columns + '\n')
 
         while (line := next(csv_iter, None)) is not None:
-            csv_lines.append("| " + " | ".join(line) + " |\n")
+            md_lines.append("| " + " | ".join(line) + " |\n")
 
     output_path = file_name.replace("csv", "md")
     with open(output_path, mode="w") as output_file:
-        output_file.writelines(csv_lines)
+        output_file.writelines(md_lines)
 
 def tsv_to_mdtable(file_name):
     """
     Converts TSV file to Markdown table.
+    tsv_lines = contains the tab seperated vaules from TSV file.
+    processed_lines = contains the formatted Markdown table lines.
     """
     tsv_lines = list()
     with open(file_name) as tsv_file:

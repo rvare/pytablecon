@@ -6,9 +6,6 @@ def csv_to_html(file_name):
     Converts a CSV file to an HTML document.
     There is no styling for the HTML output.
     """
-    name_temp = file_name.split('.')[-2].split('/')[-1]
-    html_head = ' '*4 + "<head>\n" + ' '*8 + f"<title>{name_temp}</title>\n" + ' '*4 + "</head>\n"
-
     table_lines = list()
     with open(file_name) as csv_file:
         csv_reader = csv.reader(csv_file)
@@ -30,21 +27,12 @@ def csv_to_html(file_name):
         table_lines.append(' '*4 + "</table>\n")
 
     output_to_file(file_name, "csv", "html", table_lines)    
-    # output_path = file_name.replace("csv", "html")
-    # with open(output_path, mode="w") as output_file:
-    #     output_file.write("<!DOCTYPE HTML>\n<html>\n")
-    #     output_file.write(html_head)
-    #     output_file.write(' '*4 + "<body>\n")
-    #     output_file.writelines(table_lines)
-    #     output_file.write(' '*4 + "</body>\n</html>")
 
 def tsv_to_html(file_name):
     """
     Converts a TSV file to an HTML document.
     There is no styling for the HTML output.
     """
-    name_temp = file_name.split('.')[-2].split('/')[-1]
-    html_head = ' '*4 + "<head>\n" + ' '*8 + f"<title>{name_temp}</title>\n" + ' '*4 + "</head>\n"
     table_lines = list()
     tsv_lines = list()
     with open(file_name) as tsv_file:
@@ -67,21 +55,12 @@ def tsv_to_html(file_name):
     
     table_lines.append(' '*4 + "</table>\n")
     output_to_file(file_name, "tsv", "html", table_lines)    
-    # output_path = file_name.replace("tsv", "html")
-    # with open(output_path, "w") as output_file:
-    #     output_file.write("<!DOCTYPE HTML>\n<html>\n")
-    #     output_file.write(html_head)
-    #     output_file.write(' '*4 + "<body>\n")
-    #     output_file.writelines(table_lines)
-    #     output_file.write(' '*4 + "</body>\n</html>")
 
 def mdtable_to_html(file_name):
     """
     Converts a Markdown table to HTML.
     Can only do the pipe style table for now.
     """
-    name_temp = file_name.split('.')[-2].split('/')[-1]
-    html_head = ' '*4 + "<head>\n" + ' '*8 + f"<title>{name_temp}</title>\n" + ' '*4 + "</head>\n"
     table_lines = list()
     md_table_lines = list()
 
@@ -114,16 +93,10 @@ def mdtable_to_html(file_name):
         table_cols_str = "</td>\n            <td>".join(table_cols)
         table_cols_str = ' '*12 + f"<td>{table_cols_str}</td>\n"
         table_lines.append(table_cols_str)
+        table_lines.append(' '*8 + "</tr>\n")
     
     table_lines.append(' '*4 + "</table>\n")
     output_to_file(file_name, "md", "html", table_lines)
-    # output_path = file_name.replace("md", "html")
-    # with open(output_path, "w") as output_file:
-    #     output_file.write("<!DOCTYPE HTML>\n<html>\n")
-    #     output_file.write(html_head)
-    #     output_file.write(' '*4 + "<body>\n")
-    #     output_file.writelines(table_lines)
-    #     output_file.write(' '*4 + "</body>\n</html>")
 
 def output_to_file(file_name, orig_format, output_format, table_lines):
     name_temp = file_name.split('.')[-2].split('/')[-1]

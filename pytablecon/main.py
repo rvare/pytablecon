@@ -15,32 +15,27 @@ if __name__ == '__main__':
         exit()
 
     file_extension = file_name.split('.')[-1]
-    # Prints for testing
-    # print(file_extension)
-    # print(file_name.split('.'))
 
-    if file_extension == "md":
+    if file_extension == "md": # From Markdown
         if output_name == "csv":
             mdtable_to_csv(file_name)
         elif output_name == "tsv":
             mdtable_to_tsv(file_name)
         elif output_name == "html":
             mdtable_to_html(file_name)
-    elif file_extension == "csv":
+    elif file_extension == "csv": # From CSV
         if output_name == "md":
             csv_to_mdtable(file_name)
         elif output_name == "html":
-            # print("CSV to HTML")
             csv_to_html(file_name)
         elif output_name == "tsv":
             csv_to_tsv(file_name)
-    elif file_extension == "tsv":
+    elif file_extension == "tsv": # From TSV
         if output_name == "md":
             tsv_to_mdtable(file_name)
         elif output_name == "csv":
             tsv_to_csv(file_name)
         elif output_name == "html":
-            # print("TSV to HTML")
             tsv_to_html(file_name)
     else:
         print("Output format not valid")
