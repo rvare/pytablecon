@@ -2,3 +2,4 @@ test_output*.*
 test*.*
 __pycache__
 tests/test*.*
+*.swp # Ignore Vim .swp
