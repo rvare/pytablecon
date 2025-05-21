@@ -8,7 +8,7 @@ if __name__ == '__main__':
     if len(sys.argv) >= 3:
         file_name = sys.argv[1]
         output_name = sys.argv[2]
-        lines_temp = list()
+        lines_temp = []
     else:
         print("Not enough arguments. Be sure to specify input file and output file format")
         print("Ex: file_name.ex out")

@@ -7,7 +7,7 @@ def mdtable_to_csv(file_name):
     processed_lines contains the fields of the Markdown table.
     """
     # Get Markdown table
-    md_lines = list()
+    md_lines = []
     with open(file_name) as md_file:
         for i in md_file:
             md_lines.append(i)
@@ -16,7 +16,7 @@ def mdtable_to_csv(file_name):
     processed_lines = [x.strip('\n').split('|') for x in md_lines]
     del processed_lines[1]
 
-    str_lines = list()
+    str_lines = []
     for i in processed_lines:
         if i[0] == '' and i[-1] == '':
             del i[0]
@@ -38,7 +38,7 @@ def tsv_to_csv(file_name):
     tsv_lines = contains lines read from a TSV file.
     csv_lines = contains lines to be written to a CSV file.
     """
-    tsv_lines = list()
+    tsv_lines = []
     with open(file_name) as tsv_file:
         for i in tsv_file:
             tsv_lines.append(i)

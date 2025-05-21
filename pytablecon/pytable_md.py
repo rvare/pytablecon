@@ -5,7 +5,7 @@ def csv_to_mdtable(file_name):
     Converts a CSV to a formatted Markdown table.
     md_lines = contains data from CSV file in Markdown format.
     """
-    md_lines = list()
+    md_lines = []
     with open(file_name) as csv_file:
         csv_reader = csv.reader(csv_file)
 
@@ -28,14 +28,14 @@ def tsv_to_mdtable(file_name):
     tsv_lines = contains the tab seperated vaules from TSV file.
     processed_lines = contains the formatted Markdown table lines.
     """
-    tsv_lines = list()
+    tsv_lines = []
     with open(file_name) as tsv_file:
         for line in tsv_file:
             tsv_lines.append(line)
    
     alignment_cols = md_alignment_columns(tsv_lines[0], '\t')
 
-    processed_lines = list()
+    processed_lines = []
     for i in tsv_lines:
         processed_lines.append( "| " + i.strip('\n').replace('\t', " | ") + " |\n" )
 

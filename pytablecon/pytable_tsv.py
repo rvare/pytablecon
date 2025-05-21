@@ -6,7 +6,7 @@ def mdtable_to_tsv(file_name):
     TODO: Handle different kinds of Markdown tables.
     """
     # Get Markdown table
-    md_lines = list()
+    md_lines = []
     with open(file_name) as md_file:
         for i in md_file:
             md_lines.append(i)
@@ -15,7 +15,7 @@ def mdtable_to_tsv(file_name):
     processed_lines = [x.strip('\n').split('|') for x in md_lines]
     del processed_lines[1]
 
-    str_lines = list()
+    str_lines = []
     for i in processed_lines:
         if i[0] == '' and i[-1] == '':
             del i[0]
@@ -25,7 +25,7 @@ def mdtable_to_tsv(file_name):
             i[j] = s.strip()
         str_lines.append(i)
 
-    joined_str = list()
+    joined_str = []
     for i in str_lines:
         joined_str.append("\t".join(i) + '\n')
     
@@ -39,7 +39,7 @@ def csv_to_tsv(file_name):
     tsv_lines = contains data seperated by tabs
                 to be written to file.
     """
-    tsv_lines = list()
+    tsv_lines = []
 
     with open(file_name) as csv_file:
         csv_reader = csv.reader(csv_file)

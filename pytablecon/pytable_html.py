@@ -6,7 +6,7 @@ def csv_to_html(file_name):
     Converts a CSV file to an HTML document.
     There is no styling for the HTML output.
     """
-    table_lines = list()
+    table_lines = []
     with open(file_name) as csv_file:
         csv_reader = csv.reader(csv_file)
 
@@ -33,8 +33,8 @@ def tsv_to_html(file_name):
     Converts a TSV file to an HTML document.
     There is no styling for the HTML output.
     """
-    table_lines = list()
-    tsv_lines = list()
+    table_lines = []
+    tsv_lines = []
     with open(file_name) as tsv_file:
         for line in tsv_file:
             tsv_lines.append(line.strip('\n').split('\t'))
@@ -61,8 +61,8 @@ def mdtable_to_html(file_name):
     Converts a Markdown table to HTML.
     Can only do the pipe style table for now.
     """
-    table_lines = list()
-    md_table_lines = list()
+    table_lines = []
+    md_table_lines = []
 
     with open(file_name) as md_file:
         for line in md_file:
