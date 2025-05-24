@@ -1,10 +1,10 @@
-- [About](#about)
+- [Preamble](#preamble)
 - [Style Guide](#style-guide)
 - [Testing](#testing)
 - [Reporting Bugs](#reporting-bugs)
 - [Pull Requests](#pull-requests)
 
-# About
+# Preamble
 
 This contributing guide goes over how the code should be written, how to test, how to report bugs, and pull requests.
 
@@ -36,3 +36,4 @@ When you are reporting a bug with the code, please report the following:
 # Pull Requests
 
 Before putting in a pull request, be sure to test the code before and make sure it meets the style guide before.
+
