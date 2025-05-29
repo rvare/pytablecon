@@ -3,6 +3,10 @@ import csv
 def mdtable_to_tsv(file_name):
     """
     Convert Markdown table to TSV.
+
+    Keyword arguements:
+    file_name: Contains the path of the file that is to be converted.
+
     TODO: Handle different kinds of Markdown tables.
     """
     # Get Markdown table
@@ -36,8 +40,9 @@ def mdtable_to_tsv(file_name):
 def csv_to_tsv(file_name):
     """
     Converts a CSV file to a TSV file.
-    tsv_lines = contains data seperated by tabs
-                to be written to file.
+
+    Keyword arguements:
+    file_name: Contains the path of the file that is to be converted.
     """
     tsv_lines = []
 

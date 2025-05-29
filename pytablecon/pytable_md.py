@@ -3,7 +3,9 @@ import csv
 def csv_to_mdtable(file_name):
     """
     Converts a CSV to a formatted Markdown table.
-    md_lines = contains data from CSV file in Markdown format.
+
+    Keyword arguements:
+    file_name: Contains the path of the file that is to be converted.
     """
     md_lines = []
     with open(file_name) as csv_file:
@@ -25,8 +27,9 @@ def csv_to_mdtable(file_name):
 def tsv_to_mdtable(file_name):
     """
     Converts TSV file to Markdown table.
-    tsv_lines = contains the tab seperated vaules from TSV file.
-    processed_lines = contains the formatted Markdown table lines.
+
+    Keyword arguements:
+    file_name: Contains the path of the file that is to be converted.
     """
     tsv_lines = []
     with open(file_name) as tsv_file:
@@ -48,6 +51,10 @@ def tsv_to_mdtable(file_name):
 def md_alignment_columns(cols, delimiter):
     """
     Determines the number of columns for a Markdown table.
+
+    Keyword arguements:
+    file_name: Contains the path of the file that is to be converted.
+
     TODO: Modify function so that it can do alignment.
     TODO: Modify function so that it can do different Markdown tables styles.
     """
