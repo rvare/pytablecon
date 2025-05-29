@@ -10,25 +10,3 @@ The following is the main flow of execution. It is made to be as abstract and ge
 
 ![](./svg/PyTableConMainFlow.svg)
 
-# Code
-
-## Main
-
-**Pseudo Code:**
-
-```text
-START
-	Parse command line arguments
-	Check file extension
-	
-	Open input file
-	Grab file contents
-	Close input file
-	
-	Convert strings
-	
-	Open output file
-	Write to output file
-	Close output file
-END
-```
