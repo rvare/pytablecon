@@ -3,8 +3,10 @@ import csv
 
 def csv_to_html(file_name):
     """
-    Converts a CSV file to an HTML document.
-    There is no styling for the HTML output.
+    Converts a CSV file to an HTML document with no CSS styleing.
+
+    Keyword arguements:
+    file_name: Contains the path of the file that is to be converted.
     """
     table_lines = []
     with open(file_name) as csv_file:
@@ -30,8 +32,10 @@ def csv_to_html(file_name):
 
 def tsv_to_html(file_name):
     """
-    Converts a TSV file to an HTML document.
-    There is no styling for the HTML output.
+    Converts a TSV file to an HTML document with no CSS styling.
+
+    Keyword arguements:
+    file_name: Contains the path of the file that is to be converted.
     """
     table_lines = []
     tsv_lines = []
@@ -58,8 +62,11 @@ def tsv_to_html(file_name):
 
 def mdtable_to_html(file_name):
     """
-    Converts a Markdown table to HTML.
+    Converts a Markdown table to HTML with no CSS styling.
     Can only do the pipe style table for now.
+
+    Keyword arguements:
+    file_name: Contains the path of the file that is to be converted.
     """
     table_lines = []
     md_table_lines = []
