@@ -1,6 +1,6 @@
 # Getting Help
 
-Use the `-h` flag or `--help` to get help in the commandline.
+Use `-h` flag or `--help` to get help in the commandline.
 
 # How to run
 
@@ -9,6 +9,8 @@ To run the script, do the following
 ```python
 python main.py --what_to_convert_to file.extension
 ```
+
+The file output will appear in the same directory as the converted file.
 
 # Examples
 
