@@ -1,14 +1,14 @@
 # Contains functions that go from one format to HTML
 import csv
 
-def csv_to_html(file_name):
+def csv_to_html(file_name: str) -> None:
     """
     Converts a CSV file to an HTML document with no CSS styleing.
 
     Keyword arguements:
     file_name: Contains the path of the file that is to be converted.
     """
-    table_lines = []
+    table_lines: list[str] = []
     with open(file_name) as csv_file:
         csv_reader = csv.reader(csv_file)
 
@@ -60,7 +60,7 @@ def tsv_to_html(file_name):
     table_lines.append(' '*4 + "</table>\n")
     output_to_file(file_name, "tsv", "html", table_lines)    
 
-def mdtable_to_html(file_name):
+def mdtable_to_html(file_name: str) -> None:
     """
     Converts a Markdown table to HTML with no CSS styling.
     Can only do the pipe style table for now.
@@ -68,8 +68,8 @@ def mdtable_to_html(file_name):
     Keyword arguements:
     file_name: Contains the path of the file that is to be converted.
     """
-    table_lines = []
-    md_table_lines = []
+    table_lines: list[str] = []
+    md_table_lines: list[str] = []
 
     with open(file_name) as md_file:
         for line in md_file:
@@ -93,6 +93,7 @@ def mdtable_to_html(file_name):
     while (line := next(md_iter, None)) is not None:
         table_lines.append(' '*8 + "<tr>\n")
         table_cols = line.split('|')
+        # The next two lines delete empty strings on either end of the list
         del table_cols[0]
         del table_cols[-1]
         for i in range(len(table_cols)):
@@ -105,8 +106,9 @@ def mdtable_to_html(file_name):
     table_lines.append(' '*4 + "</table>\n")
     output_to_file(file_name, "md", "html", table_lines)
 
-def output_to_file(file_name, orig_format, output_format, table_lines):
-    name_temp = file_name.split('.')[-2].split('/')[-1]
+def output_to_file(file_name: str, orig_format: str, output_format: str, table_lines: list[str]) -> None:
+    """Creates the HTML table and writes to the output file."""
+    name_temp: list[str] = file_name.split('.')[-2].split('/')[-1]
     html_head = ' '*4 + "<head>\n" + ' '*8 + f"<title>{name_temp}</title>\n" + ' '*4 + "</head>\n"
     output_path = file_name.replace(orig_format, output_format)
     with open(output_path, "w") as output_file:
