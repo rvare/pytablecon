@@ -15,8 +15,8 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     assert '.' in sys.argv[2], "Must have file extension" # The assumption is that all files have a '.' extension.
-    file_name = sys.argv[2]
-    file_extension = sys.argv[2].split('.')[-1] # Grabs the file extension
+    file_name: str = sys.argv[2]
+    file_extension: str = sys.argv[2].split('.')[-1] # Grabs the file extension
 
     if file_extension not in ("csv", "tsv", "md"):
         print("Error: your file must have the following extensions: csv, tsv, or md")
@@ -26,7 +26,7 @@ if __name__ == '__main__':
         if file_extension == "tsv":
             tsv_to_csv(file_name)
         elif file_extension == "md":
-            md_to_csv(file_name)
+            mdtable_to_csv(file_name)
     elif args.tsv:
         if file_extension == "csv":
             csv_to_tsv(file_name)
