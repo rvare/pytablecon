@@ -1,4 +1,5 @@
 import csv
+import pytable_constants as ptc
 
 def mdtable_to_tsv(file_name: str) -> None:
     """
@@ -33,7 +34,7 @@ def mdtable_to_tsv(file_name: str) -> None:
     for i in str_lines:
         joined_str.append("\t".join(i) + '\n')
     
-    output_path: str = file_name.replace("md", "tsv")
+    output_path: str = file_name.replace(ptc.MARKDOWN_FILE_EXTENSION, ptc.TSV_FILE_EXTENSION)
     with open(output_path, "w") as output_file:
         output_file.writelines(joined_str)
 
@@ -52,7 +53,7 @@ def csv_to_tsv(file_name: str) -> None:
             tsv_lines.append('\t'.join(row) + '\n')
         
         file_name_parts: list[str] = file_name.split('.')
-        file_name_parts[-1] = "tsv"
+        file_name_parts[-1] = ptc.TSV_FILE_EXTENSION
         output_file_path: str = '.'.join(file_name_parts)
         print(output_file_path)
         with open(output_file_path, mode="w") as output_file:

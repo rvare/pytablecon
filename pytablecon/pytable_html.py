@@ -1,5 +1,6 @@
 # Contains functions that go from one format to HTML
 import csv
+import pytable_constants as ptc
 
 def csv_to_html(file_name: str) -> None:
     """
@@ -28,7 +29,7 @@ def csv_to_html(file_name: str) -> None:
         
         table_lines.append(' '*4 + "</table>\n")
 
-    output_to_file(file_name, "csv", "html", table_lines)    
+    output_to_file(file_name, ptc.CSV_FILE_EXTENSION, ptc.HTML_FILE_EXTENSION, table_lines)
 
 def tsv_to_html(file_name):
     """
@@ -58,7 +59,7 @@ def tsv_to_html(file_name):
         table_lines.append(' '*8 + "</tr>\n")
     
     table_lines.append(' '*4 + "</table>\n")
-    output_to_file(file_name, "tsv", "html", table_lines)    
+    output_to_file(file_name, ptc.TSV_FILE_EXTENSION, ptc.HTML_FILE_EXTENSION, table_lines)
 
 def mdtable_to_html(file_name: str) -> None:
     """
@@ -104,7 +105,7 @@ def mdtable_to_html(file_name: str) -> None:
         table_lines.append(' '*8 + "</tr>\n")
     
     table_lines.append(' '*4 + "</table>\n")
-    output_to_file(file_name, "md", "html", table_lines)
+    output_to_file(file_name, ptc.MARKDOWN_FILE_EXTENSION, ptc.HTML_FILE_EXTENSION, table_lines)
 
 def output_to_file(file_name: str, orig_format: str, output_format: str, table_lines: list[str]) -> None:
     """Creates the HTML table and writes to the output file."""

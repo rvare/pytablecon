@@ -1,4 +1,5 @@
 import csv
+import pytable_constants as ptc
 
 def csv_to_mdtable(file_name: str) -> None:
     """
@@ -20,7 +21,7 @@ def csv_to_mdtable(file_name: str) -> None:
         while (line := next(csv_iter, None)) is not None:
             md_lines.append("| " + " | ".join(line) + " |\n")
 
-    output_path: str = file_name.replace("csv", "md")
+    output_path: str = file_name.replace(ptc.CSV_FILE_EXTENSION, ptc.MARKDOWN_FILE_EXTENSION)
     with open(output_path, mode="w") as output_file:
         output_file.writelines(md_lines)
 
@@ -44,7 +45,7 @@ def tsv_to_mdtable(file_name: str) -> None:
 
     processed_lines.insert(1, alignment_cols + '\n')
 
-    output_path = file_name.replace("tsv", "md")
+    output_path = file_name.replace(ptc.TSV_FILE_EXTENSION, ptc.MARKDOWN_FILE_EXTENSION)
     with open(output_path, mode="w") as output_file:
         output_file.writelines(processed_lines)
 
