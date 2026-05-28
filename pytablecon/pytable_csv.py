@@ -10,7 +10,7 @@ def mdtable_to_csv(file_name: str) -> None:
     """
     # Get Markdown table
     md_lines: list[str] = []
-    with open(file_name) as md_file:
+    with open(file_name, encoding="utf-8") as md_file:
         for i in md_file:
             md_lines.append(i)
 
@@ -30,7 +30,7 @@ def mdtable_to_csv(file_name: str) -> None:
     
     # Output to file
     output_path: str = file_name.replace(ptc.MARKDOWN_FILE_EXTENSION, ptc.CSV_FILE_EXTENSION)
-    with open(output_path, mode="w", newline="") as output_file:
+    with open(output_path, mode="w", newline="", encoding="utf-8") as output_file:
         writer = csv.writer(output_file)
         writer.writerows(str_lines)
 
@@ -42,7 +42,7 @@ def tsv_to_csv(file_name: str) -> None:
     file_name: contains the path of the file that is to be converted.
     """
     tsv_lines: list[str] = []
-    with open(file_name) as tsv_file:
+    with open(file_name, encoding="utf-8") as tsv_file:
         for i in tsv_file:
             tsv_lines.append(i)
     
@@ -50,5 +50,5 @@ def tsv_to_csv(file_name: str) -> None:
     csv_lines: list[str] = [','.join(x) for x in processed_lines]
 
     output_path: str = file_name.replace(ptc.TSV_FILE_EXTENSION, ptc.CSV_FILE_EXTENSION)
-    with open(output_path, "w") as output_file:
+    with open(output_path, "w", encoding="utf-8") as output_file:
         output_file.writelines(csv_lines)

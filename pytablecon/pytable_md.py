@@ -9,7 +9,7 @@ def csv_to_mdtable(file_name: str) -> None:
     file_name: Contains the path of the file that is to be converted.
     """
     md_lines: list[str] = []
-    with open(file_name) as csv_file:
+    with open(file_name, encoding="utf-8") as csv_file:
         csv_reader = csv.reader(csv_file)
 
         csv_iter = iter(csv_reader)
@@ -22,7 +22,7 @@ def csv_to_mdtable(file_name: str) -> None:
             md_lines.append("| " + " | ".join(line) + " |\n")
 
     output_path: str = file_name.replace(ptc.CSV_FILE_EXTENSION, ptc.MARKDOWN_FILE_EXTENSION)
-    with open(output_path, mode="w") as output_file:
+    with open(output_path, mode="w", encoding="utf-8") as output_file:
         output_file.writelines(md_lines)
 
 def tsv_to_mdtable(file_name: str) -> None:
@@ -33,7 +33,7 @@ def tsv_to_mdtable(file_name: str) -> None:
     file_name: Contains the path of the file that is to be converted.
     """
     tsv_lines: list[str] = []
-    with open(file_name) as tsv_file:
+    with open(file_name, encoding="utf-8") as tsv_file:
         for line in tsv_file:
             tsv_lines.append(line)
    
@@ -46,7 +46,7 @@ def tsv_to_mdtable(file_name: str) -> None:
     processed_lines.insert(1, alignment_cols + '\n')
 
     output_path = file_name.replace(ptc.TSV_FILE_EXTENSION, ptc.MARKDOWN_FILE_EXTENSION)
-    with open(output_path, mode="w") as output_file:
+    with open(output_path, mode="w", encoding="utf-8") as output_file:
         output_file.writelines(processed_lines)
 
 def md_alignment_columns(cols: str, delimiter: str) -> str:
