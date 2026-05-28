@@ -32,14 +32,14 @@ if __name__ == '__main__':
         if file_extension == ptc.CSV_FILE_EXTENSION:
             csv_to_tsv(file_name)
         elif file_extension == ptc.MARKDOWN_FILE_EXTENSION:
-            md_to_tsv(file_name)
+            mdtable_to_tsv(file_name)
     elif args.html:
         if file_extension == ptc.CSV_FILE_EXTENSION:
             csv_to_html(file_name)
         elif file_extension == ptc.TSV_FILE_EXTENSION:
             tsv_to_html(file_name)
         elif file_extension == ptc.MARKDOWN_FILE_EXTENSION:
-            md_to_html(file_name)
+            mdtable_to_html(file_name)
     elif args.markdown:
         if file_extension == ptc.CSV_FILE_EXTENSION:
             csv_to_mdtable(file_name)
