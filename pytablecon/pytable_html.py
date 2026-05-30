@@ -10,7 +10,7 @@ def csv_to_html(file_name: str) -> None:
     file_name: Contains the path of the file that is to be converted.
     """
     table_lines: list[str] = []
-    with open(file_name) as csv_file:
+    with open(file_name, encoding="utf-8") as csv_file:
         csv_reader = csv.reader(csv_file)
 
         csv_iter = iter(csv_reader)
@@ -31,7 +31,7 @@ def csv_to_html(file_name: str) -> None:
 
     output_to_file(file_name, ptc.CSV_FILE_EXTENSION, ptc.HTML_FILE_EXTENSION, table_lines)
 
-def tsv_to_html(file_name):
+def tsv_to_html(file_name: str):
     """
     Converts a TSV file to an HTML document with no CSS styling.
 
@@ -40,7 +40,7 @@ def tsv_to_html(file_name):
     """
     table_lines = []
     tsv_lines = []
-    with open(file_name) as tsv_file:
+    with open(file_name, encoding="utf-8") as tsv_file:
         for line in tsv_file:
             tsv_lines.append(line.strip('\n').split('\t'))
     
@@ -72,7 +72,7 @@ def mdtable_to_html(file_name: str) -> None:
     table_lines: list[str] = []
     md_table_lines: list[str] = []
 
-    with open(file_name) as md_file:
+    with open(file_name, encoding="utf-8") as md_file:
         for line in md_file:
             md_table_lines.append(line.strip('\n'))
     
@@ -112,7 +112,7 @@ def output_to_file(file_name: str, orig_format: str, output_format: str, table_l
     name_temp: list[str] = file_name.split('.')[-2].split('/')[-1]
     html_head = ' '*4 + "<head>\n" + ' '*8 + f"<title>{name_temp}</title>\n" + ' '*4 + "</head>\n"
     output_path = file_name.replace(orig_format, output_format)
-    with open(output_path, "w") as output_file:
+    with open(output_path, "w", encoding="utf-8") as output_file:
         output_file.write("<!DOCTYPE HTML>\n<html>\n")
         output_file.write(html_head)
         output_file.write(' '*4 + "<body>\n")

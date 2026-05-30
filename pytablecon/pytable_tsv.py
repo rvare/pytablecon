@@ -12,7 +12,7 @@ def mdtable_to_tsv(file_name: str) -> None:
     """
     # Get Markdown table
     md_lines: list[str] = []
-    with open(file_name) as md_file:
+    with open(file_name, encoding="utf-8") as md_file:
         for i in md_file:
             md_lines.append(i)
 
@@ -35,7 +35,7 @@ def mdtable_to_tsv(file_name: str) -> None:
         joined_str.append("\t".join(i) + '\n')
     
     output_path: str = file_name.replace(ptc.MARKDOWN_FILE_EXTENSION, ptc.TSV_FILE_EXTENSION)
-    with open(output_path, "w") as output_file:
+    with open(output_path, "w", encoding="utf-8") as output_file:
         output_file.writelines(joined_str)
 
 def csv_to_tsv(file_name: str) -> None:
@@ -47,7 +47,7 @@ def csv_to_tsv(file_name: str) -> None:
     """
     tsv_lines: list[str] = []
 
-    with open(file_name) as csv_file:
+    with open(file_name, encoding="utf-8") as csv_file:
         csv_reader = csv.reader(csv_file)
         for row in csv_reader:
             tsv_lines.append('\t'.join(row) + '\n')
@@ -56,5 +56,5 @@ def csv_to_tsv(file_name: str) -> None:
         file_name_parts[-1] = ptc.TSV_FILE_EXTENSION
         output_file_path: str = '.'.join(file_name_parts)
         print(output_file_path)
-        with open(output_file_path, mode="w") as output_file:
+        with open(output_file_path, mode="w", encoding="utf-8") as output_file:
             output_file.writelines(tsv_lines)
